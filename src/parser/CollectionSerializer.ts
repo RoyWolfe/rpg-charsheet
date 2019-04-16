@@ -1,14 +1,9 @@
 import { ITraitSerializer } from "./ITraitSerializer";
 import { ITrait } from "../models/traits/ITraitOfT";
-import { ISerializable } from "./ISerializable";
 import { CollectionTrait } from "../models/traits/CollectionTrait";
 import { SerializationError } from "./SerializationError";
 
-export class CollectionSerializer extends ITraitSerializer {
-  constructor() {
-    console.log("In: CollectionSerializer");
-  }
-
+export class CollectionSerializer implements ITraitSerializer {
   serializationIdentifier: string = "de.royderwolf.rpgsheet.collectiontrait";
 
   canSerialize(serializationIdentifier: string): boolean {
@@ -36,9 +31,6 @@ export class CollectionSerializer extends ITraitSerializer {
         } could not be converted to collectionTrait for serialisation.`
       );
     }
-
-    console.log(collectionTrait);
-    throw new Error("halp!");
 
     return collectionTrait;
   }

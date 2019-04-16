@@ -4,10 +4,6 @@ import { SerializationError } from "../parser/SerializationError";
 
 export abstract class SerializerBase<TTarget extends ITrait<T>>
   implements ITraitSerializer {
-  constructor() {
-    console.log("In: SerializerBase");
-  }
-
   canSerialize(serializationIdentifier: string): boolean {
     return serializationIdentifier === this.serializationIdentifier;
   }

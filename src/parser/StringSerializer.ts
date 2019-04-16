@@ -6,7 +6,6 @@ export class StringSerializer extends SerializerBase<StringTrait> {
   serializationIdentifier: string = "de.royderwolf.rpgsheet.stringtrait";
 
   constructor() {
-    console.log("In: StringSerializer");
     super();
   }
 

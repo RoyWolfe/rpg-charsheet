@@ -4,7 +4,6 @@ import { SerializationError } from "./SerializationError";
 
 export class Serializer {
   constructor(serializers: Array<ITraitSerializer>) {
-    console.log("In: Serializer");
     if (serializers != null && serializers.length > 0) {
       serializers.forEach(item => {
         this.serialiserByTraitIdenfier[item.serializationIdentifier] = item;

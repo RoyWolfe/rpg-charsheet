@@ -4,7 +4,7 @@ import { Serializer } from "../src/parser/Serializer";
 import { StringSerializer } from "../src/parser/StringSerializer";
 import { CollectionSerializer } from "../src/parser/CollectionSerializer";
 
-/* describe("When serialising a string trait", () => {
+describe("When serialising a string trait", () => {
   test("emits something", () => {
     let stringTrait = new StringTrait("name", "value");
 
@@ -14,11 +14,10 @@ import { CollectionSerializer } from "../src/parser/CollectionSerializer";
 
     expect(result).toBe(JSON.stringify(stringTrait));
   });
-}); */
+});
 
 describe("When serialising a string trait collection", () => {
   test("emits something", () => {
-    console.log("hello world");
     const stringTraits = new Array<StringTrait>();
 
     for (let i = 0; i <= 3; i++) {
@@ -26,16 +25,15 @@ describe("When serialising a string trait collection", () => {
       stringTraits.push(stringTrait);
     }
 
-    console.log("making: collection serializer");
-    let cs = new CollectionSerializer();
-    // console.log("done: collection serializer");
+    let sut = new Serializer([
+      new CollectionSerializer(),
+      new StringSerializer()
+    ]);
 
-    // let sut = new Serializer([cs, new StringSerializer()]);
+    var collectionTrait = new CollectionTrait(stringTraits);
 
-    // var collectionTrait = new CollectionTrait(stringTraits);
+    let result = sut.serialize(collectionTrait);
 
-    // let result = sut.serialize(collectionTrait);
-
-    // expect(result).toBe(JSON.stringify(collectionTrait));
+    expect(result).toBe(JSON.stringify(collectionTrait));
   });
 });
