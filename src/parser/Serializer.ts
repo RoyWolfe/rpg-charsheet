@@ -9,8 +9,6 @@ export class Serializer {
         this.serialiserByTraitIdenfier[item.serializationIdentifier] = item;
       });
     }
-
-    this.haveBeenCalled = false;
   }
 
   serialiserByTraitIdenfier: object = {};
@@ -32,9 +30,7 @@ export class Serializer {
         obj.serializationIdentifier
       }`;
 
-      throw new Error(JSON.stringify(obj));
-      //throw new Error(errMsg);
-      //throw new SerializationError(errMsg);
+      throw new SerializationError(errMsg);
     }
 
     const convertedObject = targetSerializer.serialize(obj, item =>

@@ -63,6 +63,8 @@ describe("When serialising a character", () => {
 
     let result = sut.serialize(character);
 
+    console.log(result);
+
     expect(result).toBe(JSON.stringify(character));
   });
 });
