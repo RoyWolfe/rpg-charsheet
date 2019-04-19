@@ -1,7 +1,7 @@
 import { StringTrait } from "../src/models/traits/StringTrait";
 import { CollectionTrait } from "../src/models/traits/CollectionTrait";
 import { Parser } from "../src/parser/Parser";
-import { StringSerializer } from "../src/parser/StringSerializer";
+import { StringParser } from "../src/parser/StringParser";
 import { CollectionSerializer } from "../src/parser/CollectionSerializer";
 
 describe("When deserialising a string trait", () => {
