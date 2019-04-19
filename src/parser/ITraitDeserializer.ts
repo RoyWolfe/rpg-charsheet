@@ -4,8 +4,8 @@ import { ISerializable } from "./ISerializable";
 export interface ITraitDeserializer {
   serializationIdentifier: string;
   canDeserialize(serializationIdentifier: string): boolean;
-  deserialize<T>(
+  deserialize(
     objectToDeserialize: any,
     deserializeChildCallback: (child: any) => ISerializable
-  ): ITrait<T>;
+  ): ISerializable;
 }

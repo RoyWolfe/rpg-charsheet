@@ -2,39 +2,37 @@ import { StringTrait } from "../src/models/traits/StringTrait";
 import { CollectionTrait } from "../src/models/traits/CollectionTrait";
 import { Parser } from "../src/parser/Parser";
 import { StringParser } from "../src/parser/StringParser";
-import { CollectionSerializer } from "../src/parser/CollectionSerializer";
+import { CollectionParser } from "../src/parser/CollectionParser";
 
 describe("When deserialising a string trait", () => {
   test("emits something", () => {
     let stringTrait = new StringTrait("name", "value");
-    var json = JSON.stringify(stringTrait);
+    let json = JSON.stringify(stringTrait);
 
     let sut = new Parser([new StringParser()]);
 
     let result = sut.deserialize(json);
 
-    expect(result).toBe(stringTrait);
+    expect(result).toEqual(stringTrait);
   });
 });
 
-// describe("When serialising a string trait collection", () => {
-//   test("emits something", () => {
-//     const stringTraits = new Array<StringTrait>();
+describe("When serialising a string trait collection", () => {
+  test("emits something", () => {
+    const stringTraits = new Array<StringTrait>();
 
-//     for (let i = 0; i <= 3; i++) {
-//       let stringTrait = new StringTrait(`Name ${i}`, `Value ${i}`);
-//       stringTraits.push(stringTrait);
-//     }
+    for (let i = 0; i <= 3; i++) {
+      let stringTrait = new StringTrait(`Name ${i}`, `Value ${i}`);
+      stringTraits.push(stringTrait);
+    }
 
-//     let sut = new Serializer([
-//       new CollectionSerializer(),
-//       new StringSerializer()
-//     ]);
+    let sut = new Parser([new CollectionParser(), new StringParser()]);
 
-//     var collectionTrait = new CollectionTrait(stringTraits);
+    let collectionTrait = new CollectionTrait(stringTraits);
+    let json = JSON.stringify(collectionTrait);
 
-//     let result = sut.serialize(collectionTrait);
+    let result = sut.deserialize(json);
 
-//     expect(result).toBe(JSON.stringify(collectionTrait));
-//   });
-// });
+    expect(result).toEqual(collectionTrait);
+  });
+});
