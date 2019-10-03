@@ -4,6 +4,7 @@ import { Character } from "../src/models/Character";
 import { Serializer } from "../src/parser/Serializer";
 import { StringSerializer } from "../src/parser/StringSerializer";
 import { CharacterSerializer } from "../src/parser/CharacterSerializer";
+import { SerializationError } from "../src/parser/SerializationError";
 
 class TestSystem implements IRpgSystem {
   name: string;
